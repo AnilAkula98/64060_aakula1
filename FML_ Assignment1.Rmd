@@ -1,0 +1,54 @@
+---
+title: "FML_Assignment1"
+output: html_document
+date: "2023-09-05"
+---
+# Dataset Source (https://www.kaggle.com/datasets/abdurrahman22224/smartphone-new-data)
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# imported Dataset into R
+```{r}
+var1 <- read.csv("smartphone_cleaned_v5.csv")
+```
+
+# descriptive statistics for a selection of quantitative and categorical variables.
+```{r}
+
+#descriptive statistics
+summary(var1)
+
+#quantitative Variables
+summary(var1$price)
+summary(var1$rating)
+summary(var1$num_cores)
+summary(var1$primary_camera_rear)
+summary(var1$primary_camera_front)
+summary(var1$extended_memory_available)
+summary(var1$num_rear_cameras)
+summary(var1$num_front_cameras)
+
+#categorical variables
+summary(var1$brand_name)
+summary(var1$model)
+summary(var1$has_5g)
+summary(var1$has_nfc)
+summary(var1$has_ir_blaster)
+summary(var1$processor_brand)
+
+
+```
+# Transform at least one variable. It doesn't matter what the transformation is in R Studio
+
+```{r}
+var1$model <-log(var1$price)
+summary(var1$model)
+```
+
+#Plot at least one quantitative variable, and one scatterplot
+```{r}
+plot(var1$screen_size)
+library(car)
+scatterplot(price~rating,data=var1)
+```
+
